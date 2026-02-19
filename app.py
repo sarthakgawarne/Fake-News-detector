@@ -54,7 +54,7 @@ def extract_text_from_url(url):
 # ---------------- OPENROUTER LLM EXPLANATION ----------------
 def get_llm_explanation(text, label, confidence):
 
-    api_key = st.secrets["OPENROUTER_API_KEY"]
+    api_key = os.environ.get("OPENROUTER_API_KEY")
 
     url = "https://openrouter.ai/api/v1/chat/completions"
 
@@ -158,3 +158,4 @@ if st.button("Analyze"):
         explanation = get_llm_explanation(final_text[:1200], label, confidence)
 
     st.code(explanation)
+
